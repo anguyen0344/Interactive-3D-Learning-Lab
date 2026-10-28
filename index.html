@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive 3D Learning Lab</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Interactive 3D Learning Lab</h1>
+        <p>Explore a virtual computer science workspace</p>
+    </header>
+<main class="layout">
+<section class="viewer">
+    <canvas id="renderCanvas"></canvas>
+    <p class="hint">Drag to rotate - Scroll to zoom - Click the monitor</p>
+</section>
+<aside class="info-panel">
+    <h2 id="infoTitle">Welcome to the Lab</h2>
+    <p id="infoText">
+        Explore the 3D workspace and click the computer monitor to learn more.
+    </p>
+    <button id="exploreMonitor">Explore Monitor</button>
+    <button id="resetView">Reset Camera</button>
+</aside>
+</main>
+<script src="https://cdn.babylonjs.com/babylon.js"></script>
+<script src="script.js"></script>
+
+
+
+
+</body>
+</html>
