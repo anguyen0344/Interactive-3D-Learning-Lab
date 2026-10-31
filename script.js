@@ -313,6 +313,94 @@ addBookLabel(htmlBook, "HTML");
 addBookLabel(cssBook, "CSS");
 addBookLabel(jsBook, "JS");
 
+
+/*Create a material for book pages*/
+const pagesMaterial = new BABYLON.StandardMaterial(
+    "pagesMat",
+    scene
+);
+pagesMaterial.diffuseColor = new BABYLON.Color3(
+    0.95,
+    0.92,
+    0.82
+);
+
+/*Add visible pages to a book */
+function addBookPages(book){
+    const pages = BABYLON.MeshBuilder.CreateBox(
+    book.name + "Pages",
+    {
+        width: 0.04,
+        height: 0.42,
+        depth: 0.23
+    },
+    scene
+);
+pages.parent = book;
+pages.position = new BABYLON.Vector3(
+    0.083,
+    0,
+    0
+);
+pages.material = pagesMaterial;
+pages.isPickable = false;
+return pages;
+}
+
+
+/*Add page edges to each book */
+addBookPages(htmlBook);
+addBookPages(cssBook);
+addBookPages(jsBook);
+
+/* Create a material for book spines */
+const spineMaterial = new BABYLON.StandardMaterial(
+  "spineMat",
+  scene
+);
+
+spineMaterial.diffuseColor = new BABYLON.Color3(
+  0.08,
+  0.10,
+  0.16
+);
+
+
+/* Add a spine detail to a book */
+function addBookSpine(book) {
+
+  const spine = BABYLON.MeshBuilder.CreateBox(
+    book.name + "Spine",
+    {
+      width: 0.018,
+      height: 0.48,
+      depth: 0.015
+    },
+    scene
+  );
+
+  spine.parent = book;
+
+  spine.position = new BABYLON.Vector3(
+    -0.07,
+    0,
+    -0.149
+  );
+
+  spine.material = spineMaterial;
+  spine.isPickable = false;
+
+  return spine;
+}
+
+/* Add spines to the programming books */
+addBookSpine(htmlBook);
+addBookSpine(cssBook);
+addBookSpine(jsBook);
+
+
+
+
 /*Render the scene*/
 engine.runRenderLoop(() => {
     scene.render();
